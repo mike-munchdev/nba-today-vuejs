@@ -1,3 +1,3 @@
 ## NBA Today VueJS
 
-NBA Today is a VueJS application that communicates with https://github.com/mike-munchdev/nba-today-api.
+NBA Today is a VueJS application that communicates with https://md-nba-today.herokuapp.com/.
