@@ -8,7 +8,7 @@
     <div class="container" v-if="isLoading === false">
       <div class="row">
         <div class="col-xs-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-          <button class="btn btn-outline-primary btn-block mt-2" v-on:click="getGames">Refresh</button>
+          <button class="btn btn-outline-primary btn-block mt-2" v-on:click="getGames(null, $event)">Refresh</button>
           <GameList title="Live" v-bind:games="liveGames"/>
           <GameList title="Upcoming" v-bind:games="upcomingGames"/>          
           <GameList title="Finished" v-bind:games="finishedGames"/>
@@ -38,10 +38,11 @@ export default {
     };
   },
   methods: {
-    async getGames(date) {
+    async getGames(date, e) {
       try {
+        const dateParam = date || new Date();        
         this.isLoading = true;
-        const games = await GameService.getGames(date);
+        const games = await GameService.getGames(dateParam);
         this.upcomingGames = games.filter(g => g.statusNum === 1);
         this.liveGames = games.filter(g => g.statusNum === 2);
         this.finishedGames = games.filter(g => g.statusNum === 3);
