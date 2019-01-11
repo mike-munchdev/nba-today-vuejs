@@ -38,10 +38,10 @@ export default {
     };
   },
   methods: {
-    async getGames() {
+    async getGames(date) {
       try {
         this.isLoading = true;
-        const games = await GameService.getGames(new Date());
+        const games = await GameService.getGames(date);
         this.upcomingGames = games.filter(g => g.statusNum === 1);
         this.liveGames = games.filter(g => g.statusNum === 2);
         this.finishedGames = games.filter(g => g.statusNum === 3);
@@ -54,7 +54,7 @@ export default {
     }
   },
   created() {
-    this.getGames();
+    this.getGames(new Date());
   }
 };
 </script>
