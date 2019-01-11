@@ -9,8 +9,8 @@
       <div class="row">
         <div class="col-xs-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
           <button class="btn btn-outline-primary btn-block mt-2" v-on:click="getGames">Refresh</button>
-          <GameList title="Upcoming" v-bind:games="upcomingGames"/>
           <GameList title="Live" v-bind:games="liveGames"/>
+          <GameList title="Upcoming" v-bind:games="upcomingGames"/>          
           <GameList title="Finished" v-bind:games="finishedGames"/>
         </div>
       </div>
@@ -48,6 +48,8 @@ export default {
         this.isLoading = false;
       } catch (e) {
         this.isLoading = false;
+        alert("error occured");
+        console.log(e);
       }
     }
   },

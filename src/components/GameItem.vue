@@ -11,6 +11,20 @@ export default {
   name: "GameItem",
   props: ["game"],
   methods: {
+    getPeriodWithOrdinal(period) {
+      switch (period) {
+        case 1:
+          return "1st";
+        case 2:
+          return "2nd";
+        case 3:
+          return "3rd";
+        case 4:
+          return "4th";
+        default:
+          return "OT";
+      }
+    },
     getScore(game, team) {
       if (game.period.current === 0) {
         return `<span class="team-record">${team.win} - ${team.loss}</span>`;
@@ -55,7 +69,7 @@ export default {
         switch (game.statusNum) {
           case 2:
             return `<div class="game-time text-right">
-                ${game.period.isEndOfPeriod ? "End of " : game.clock}{" "}
+                ${game.period.isEndOfPeriod ? "End of " : game.clock}
                 ${this.getPeriodWithOrdinal(game.period.current)}
               </div>`;
           case 3:

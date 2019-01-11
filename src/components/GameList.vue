@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import GameItemList from "./GameItemList.vue"
+import GameItemList from "./GameItemList.vue";
 
 export default {
   name: "GameList",
