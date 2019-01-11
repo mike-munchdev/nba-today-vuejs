@@ -41,7 +41,7 @@ export default {
     async getGames() {
       try {
         this.isLoading = true;
-        const games = await GameService.getGames();
+        const games = await GameService.getGames(new Date());
         this.upcomingGames = games.filter(g => g.statusNum === 1);
         this.liveGames = games.filter(g => g.statusNum === 2);
         this.finishedGames = games.filter(g => g.statusNum === 3);
